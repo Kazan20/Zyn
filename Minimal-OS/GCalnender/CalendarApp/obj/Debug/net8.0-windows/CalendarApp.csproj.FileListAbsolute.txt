@@ -1,0 +1,14 @@
+C:\Users\User\Desktop\ZYN-Desktop\Minimal-OS\GCalnender\CalendarApp\bin\Debug\net8.0-windows\CalendarApp.exe
+C:\Users\User\Desktop\ZYN-Desktop\Minimal-OS\GCalnender\CalendarApp\bin\Debug\net8.0-windows\CalendarApp.deps.json
+C:\Users\User\Desktop\ZYN-Desktop\Minimal-OS\GCalnender\CalendarApp\bin\Debug\net8.0-windows\CalendarApp.runtimeconfig.json
+C:\Users\User\Desktop\ZYN-Desktop\Minimal-OS\GCalnender\CalendarApp\bin\Debug\net8.0-windows\CalendarApp.dll
+C:\Users\User\Desktop\ZYN-Desktop\Minimal-OS\GCalnender\CalendarApp\bin\Debug\net8.0-windows\CalendarApp.pdb
+C:\Users\User\Desktop\ZYN-Desktop\Minimal-OS\GCalnender\CalendarApp\obj\Debug\net8.0-windows\CalendarApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\ZYN-Desktop\Minimal-OS\GCalnender\CalendarApp\obj\Debug\net8.0-windows\CalendarApp.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\ZYN-Desktop\Minimal-OS\GCalnender\CalendarApp\obj\Debug\net8.0-windows\CalendarApp.AssemblyInfo.cs
+C:\Users\User\Desktop\ZYN-Desktop\Minimal-OS\GCalnender\CalendarApp\obj\Debug\net8.0-windows\CalendarApp.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\ZYN-Desktop\Minimal-OS\GCalnender\CalendarApp\obj\Debug\net8.0-windows\CalendarApp.dll
+C:\Users\User\Desktop\ZYN-Desktop\Minimal-OS\GCalnender\CalendarApp\obj\Debug\net8.0-windows\refint\CalendarApp.dll
+C:\Users\User\Desktop\ZYN-Desktop\Minimal-OS\GCalnender\CalendarApp\obj\Debug\net8.0-windows\CalendarApp.pdb
+C:\Users\User\Desktop\ZYN-Desktop\Minimal-OS\GCalnender\CalendarApp\obj\Debug\net8.0-windows\CalendarApp.genruntimeconfig.cache
+C:\Users\User\Desktop\ZYN-Desktop\Minimal-OS\GCalnender\CalendarApp\obj\Debug\net8.0-windows\ref\CalendarApp.dll

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Chat with Rooms</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
+</head>
+<body>
+    <h2>Web Chat with Rooms</h2>
+    
+    <div id="login-section">
+        <label>Phone Number:</label>
+        <input type="text" id="phone_number">
+        <button onclick="sendCode()">Send Code</button>
+
+        <div id="verify-section" style="display:none;">
+            <label>Enter Code:</label>
+            <input type="text" id="code">
+            <button onclick="verifyCode()">Verify</button>
+        </div>
+
+        <div id="username-section" style="display:none;">
+            <label>Username:</label>
+            <input type="text" id="username">
+            <button onclick="setUsername()">Set Username</button>
+        </div>
+    </div>
+    
+    <div id="chat" style="display:none;">
+        <div id="messages"></div>
+        <input type="text" id="message" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        const socket = io();
+
+        function sendCode() {
+            const phone_number = document.getElementById('phone_number').value;
+            fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `phone_number=${phone_number}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(`Code sent: ${data.code}`); // Show the code for testing
+                document.getElementById('verify-section').style.display = 'block';
+            });
+        }
+
+        function verifyCode() {
+            const phone_number = document.getElementById('phone_number').value;
+            const code = document.getElementById('code').value;
+            fetch('/verify', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `phone_number=${phone_number}&code=${code}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('username-section').style.display = 'block';
+                } else {
+                    alert('Verification failed.');
+                }
+            });
+        }
+
+        function setUsername() {
+            const phone_number = document.getElementById('phone_number').value;
+            const username = document.getElementById('username').value;
+            fetch('/set_username', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `phone_number=${phone_number}&username=${username}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Username set successfully!');
+                    document.getElementById('login-section').style.display = 'none';
+                    document.getElementById('chat').style.display = 'block';
+                }
+            });
+        }
+
+        function sendMessage() {
+            const username = document.getElementById('username').value;
+            const room = 'default_room';  // For simplicity, we're using one default room
+            const message = document.getElementById('message').value;
+            socket.emit('send_message', { username: username, room: room, message: message });
+            document.getElementById('message').value = '';
+        }
+
+        socket.on('message', function(msg) {
+            const messagesDiv = document.getElementById('messages');
+            const messageElement = document.createElement('div');
+            messageElement.innerHTML = msg;
+            messagesDiv.appendChild(messageElement);
+        });
+    </script>
+</body>
+</html>

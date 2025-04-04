@@ -1,0 +1,6 @@
+# Define the package code
+def main():
+    print("Hello, World!")
+
+# Simulate the 'dload' command by defining the package code
+dload = "def main():\n    print('Hello, World!')"

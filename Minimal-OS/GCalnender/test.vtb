@@ -1,0 +1,16 @@
+{
+    "metadata": {
+        "title": "Sample Notebook",
+        "author": "User"
+    },
+    "cells": [
+        {
+            "type": "markdown",
+            "content": "# Heading\nThis is a markdown cell."
+        },
+        {
+            "type": "code",
+            "content": "print('Hello, world!')"
+        }
+    ]
+}

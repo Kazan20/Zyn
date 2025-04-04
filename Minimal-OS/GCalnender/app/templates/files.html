@@ -1,0 +1,16 @@
+<!doctype html>
+<title>Uploaded Files</title>
+<h1>Uploaded Files</h1>
+
+<form method="POST" action="/files">
+    <input type="text" name="search" placeholder="Search files..." value="{{ search_query }}">
+    <input type="submit" value="Search">
+</form>
+
+<ul>
+  {% for file in files %}
+  <li><a href="{{ url_for('download_file', filename=file) }}">{{ file }}</a></li>
+  {% endfor %}
+</ul>
+
+<a href="/">Upload More Files</a>

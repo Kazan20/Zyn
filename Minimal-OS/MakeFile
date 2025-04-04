@@ -1,0 +1,4 @@
+all:
+
+    g++ -std=c++17 -ffreestanding -c main.cpp terminal.cpp settings.cpp window_manager.cpp window.cpp -o kernel.o
+    ld -o kernel.bin -Ttext 0x1000 --oformat binary kernel.o multiboot.o

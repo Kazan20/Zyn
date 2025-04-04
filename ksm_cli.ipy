@@ -1,0 +1,68 @@
+import argparse
+import requests
+import os
+
+class KSMCLI:
+    def __init__(self):
+        self.parser = argparse.ArgumentParser(description="KAMA System packageManager (KSM) CLI")
+        subparsers = self.parser.add_subparsers(dest='command')
+
+        # Subparser for 'download' command
+        download_parser = subparsers.add_parser('download', help="Download a file from a URL")
+        download_parser.add_argument('url', help="URL to download")
+        download_parser.add_argument('--path', default='.', help="Path to save the downloaded file")
+
+        # Subparser for 'install' command
+        install_parser = subparsers.add_parser('install', help="Install a package")
+        install_parser.add_argument('package_name', help="Name of the package to install")
+
+        # Subparser for 'list' command
+        list_parser = subparsers.add_parser('list', help="List available packages")
+
+    def download_file(self, url, path):
+        try:
+            response = requests.get(url, stream=True)
+            response.raise_for_status()
+            
+            filename = os.path.join(path, url.split('/')[-1])
+            with open(filename, 'wb') as file:
+                for chunk in response.iter_content(chunk_size=8192):
+                    file.write(chunk)
+            
+            print(f"Downloaded {filename}")
+        except requests.RequestException as e:
+            print(f"Error downloading file: {e}")
+
+    def install_package(self, package_name):
+        print(f"Installing package: {package_name}")
+        # Simulate package installation
+        package_url = f"https://example.com/packages/{package_name}.tar.gz"
+        self.download_file(package_url, '.')
+
+    def list_packages(self):
+        print("Listing available packages...")
+        # Simulate package listing
+        print("package1, package2, package3")
+
+    def run(self):
+        args = self.parser.parse_args()
+        if args.command == 'download':
+            if args.url:
+                self.download_file(args.url, args.path)
+            else:
+                print("URL is required for download command")
+                self.parser.print_help()
+        elif args.command == 'install':
+            if args.package_name:
+                self.install_package(args.package_name)
+            else:
+                print("Package name is required for install command")
+                self.parser.print_help()
+        elif args.command == 'list':
+            self.list_packages()
+        else:
+            self.parser.print_help()
+
+if __name__ == "__main__":
+    cli = KSMCLI()
+    cli.run()
